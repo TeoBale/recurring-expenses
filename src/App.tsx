@@ -66,7 +66,7 @@ function App() {
       onValueChange={(value) => setActiveView(value as View)}
       className="min-h-svh gap-0"
     >
-      <header className="sticky top-0 z-20 border-b bg-background/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-20 bg-background/90 backdrop-blur-xl">
         <div className="mx-auto grid min-h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-3 px-4 sm:px-6 lg:px-8">
           <button
             type="button"
@@ -102,7 +102,7 @@ function App() {
         <TabsContent value="dashboard">
           <LiveSpendCounter subscriptions={subscriptions} />
 
-          <section className="mx-auto flex max-w-3xl flex-col gap-5 pb-20">
+          <section className="mx-auto flex max-w-3xl flex-col gap-3 pb-4">
             <div className="flex items-end justify-between gap-4">
               <div>
                 <p className="text-sm text-muted-foreground">

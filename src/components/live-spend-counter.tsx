@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import { SlotText } from "slot-text/react"
 
-import { Badge } from "@/components/ui/badge"
 import {
   formatCurrency,
   monthProgress,
@@ -35,26 +34,20 @@ export function LiveSpendCounter({ subscriptions }: LiveSpendCounterProps) {
   const accrued = monthlyTotal * monthProgress(now)
 
   return (
-    <section className="flex min-h-[48svh] flex-col items-center justify-center gap-5 py-16 text-center sm:min-h-[54svh]">
-      <div className="flex items-center gap-2">
-        <Badge variant="secondary">Live</Badge>
-        <p className="text-sm text-muted-foreground">
-          Spesa accumulata questo mese
-        </p>
-      </div>
+    <section className="flex min-h-[40svh] flex-col items-center justify-center gap-4 py-8 text-center sm:min-h-[42svh]">
       <div
-        className="max-w-full overflow-hidden font-display text-[clamp(3.25rem,10vw,7.5rem)] leading-none tracking-[-0.075em] tabular-nums"
+        className="max-w-full overflow-hidden font-display text-[clamp(4rem,15vw,7.5rem)] leading-none tracking-[-0.035em] lining-nums tabular-nums"
         aria-label={`${formatCurrency(accrued, 6)} spesi questo mese`}
       >
         <SlotText text={formatCurrency(accrued, 6)} options={slotOptions} />
       </div>
-      <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+      <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
         {subscriptions.length === 0 ? (
           "Aggiungi il primo abbonamento per vedere la spesa crescere in tempo reale."
         ) : (
           <>
             Ogni secondo conta. I tuoi abbonamenti valgono circa{" "}
-            <span className="font-medium text-foreground">
+            <span className="font-medium whitespace-nowrap text-foreground">
               {formatCurrency(monthlyTotal)} al mese
             </span>
             .

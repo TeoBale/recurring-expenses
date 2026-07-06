@@ -21,6 +21,7 @@ import {
   monthProgress,
   monthlyCost,
 } from "@/lib/subscriptions"
+import { cn } from "@/lib/utils"
 import type { Subscription } from "@/types/subscription"
 
 type SubscriptionCardProps = {
@@ -38,7 +39,10 @@ export function SubscriptionCard({
   const spentThisMonth = monthlyCost(subscription) * monthProgress(new Date())
 
   return (
-    <Card size={compact ? "sm" : "default"}>
+    <Card
+      size={compact ? "sm" : "default"}
+      className={cn(compact && "gap-1.5 py-2")}
+    >
       <CardHeader>
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted">
@@ -77,14 +81,16 @@ export function SubscriptionCard({
           <Badge variant="outline">{formatCurrency(spentThisMonth, 4)}</Badge>
         </CardContent>
       )}
-      <CardFooter className="justify-between gap-3">
+      <CardFooter
+        className={cn("justify-between gap-3", compact && "px-3 py-1.5")}
+      >
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
           <CalendarDaysIcon className="size-3.5" aria-hidden="true" />
           Rinnovo il {formatRenewalDate(subscription.renewalDate)}
         </span>
         <Button
           variant="ghost"
-          size="icon-sm"
+          size={compact ? "icon-xs" : "icon-sm"}
           aria-label={`Apri ${subscription.name}`}
         >
           <ArrowUpRightIcon />
