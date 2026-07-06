@@ -13,6 +13,7 @@ import {
   loadSubscriptions,
   saveSubscriptions,
 } from "@/lib/subscription-storage"
+import { cn } from "@/lib/utils"
 import type { Subscription } from "@/types/subscription"
 
 type View = "dashboard" | "subscriptions"
@@ -55,7 +56,7 @@ function App() {
     <Tabs
       value={activeView}
       onValueChange={(value) => setActiveView(value as View)}
-      className="min-h-svh gap-0"
+      className="h-svh gap-0 overflow-hidden"
     >
       <header className="sticky top-0 z-20 bg-background/90 backdrop-blur-xl">
         <div className="mx-auto grid min-h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-3 px-4 sm:px-6 lg:px-8">
@@ -89,7 +90,12 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:px-8">
+      <main
+        className={cn(
+          "mx-auto min-h-0 w-full max-w-7xl flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8",
+          activeView === "dashboard" && "scroll-fade-b scroll-fade-b-24"
+        )}
+      >
         <TabsContent value="dashboard">
           <LiveSpendCounter subscriptions={subscriptions} />
 
@@ -119,7 +125,7 @@ function App() {
               />
             ) : (
               <div className="flex flex-col gap-3">
-                {sortedSubscriptions.slice(0, 3).map((subscription) => (
+                {sortedSubscriptions.map((subscription) => (
                   <SubscriptionCard
                     key={subscription.id}
                     subscription={subscription}
