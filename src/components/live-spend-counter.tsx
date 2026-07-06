@@ -49,11 +49,17 @@ export function LiveSpendCounter({ subscriptions }: LiveSpendCounterProps) {
         <SlotText text={formatCurrency(accrued, 6)} options={slotOptions} />
       </div>
       <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-        Ogni secondo conta. I tuoi abbonamenti valgono circa{" "}
-        <span className="font-medium text-foreground">
-          {formatCurrency(monthlyTotal)} al mese
-        </span>
-        .
+        {subscriptions.length === 0 ? (
+          "Aggiungi il primo abbonamento per vedere la spesa crescere in tempo reale."
+        ) : (
+          <>
+            Ogni secondo conta. I tuoi abbonamenti valgono circa{" "}
+            <span className="font-medium text-foreground">
+              {formatCurrency(monthlyTotal)} al mese
+            </span>
+            .
+          </>
+        )}
       </p>
     </section>
   )
