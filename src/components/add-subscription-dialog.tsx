@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { CircleDollarSignIcon, PlusIcon } from "lucide-react"
 
 import { DatePicker } from "@/components/date-picker"
@@ -14,6 +14,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
 import {
   Field,
   FieldDescription,
@@ -91,6 +101,24 @@ function todayDate() {
   return new Date().toISOString().slice(0, 10)
 }
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window === "undefined"
+      ? false
+      : window.matchMedia("(max-width: 639px)").matches
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 639px)")
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches)
+
+    mediaQuery.addEventListener("change", updateIsMobile)
+    return () => mediaQuery.removeEventListener("change", updateIsMobile)
+  }, [])
+
+  return isMobile
+}
+
 function formatPresetPrice(price: number) {
   return new Intl.NumberFormat("it-IT", {
     style: "currency",
@@ -128,6 +156,7 @@ function ProviderLogo({ provider }: { provider: SubscriptionProvider }) {
 }
 
 export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
+  const isMobile = useIsMobile()
   const [open, setOpen] = useState(false)
   const [selectedPresetOption, setSelectedPresetOption] =
     useState<PresetOption | null>(null)
@@ -185,12 +214,175 @@ export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
     setOpen(false)
   }
 
+  const fields = (
+    <FieldGroup>
+      <FieldSet>
+        <FieldLegend variant="label">Preset</FieldLegend>
+        <FieldDescription>
+          Cerca un provider o un piano per compilare automaticamente i dettagli.
+        </FieldDescription>
+        <Field>
+          <FieldLabel htmlFor="subscription-preset">Abbonamento</FieldLabel>
+          <Combobox
+            items={presetOptions}
+            value={selectedPresetOption}
+            onValueChange={choosePreset}
+            filter={filterPresetOption}
+          >
+            <ComboboxInput
+              id="subscription-preset"
+              className="w-full"
+              placeholder="Cerca Spotify, Netflix, iCloud…"
+              showClear
+            />
+            <ComboboxContent>
+              <ComboboxEmpty>Nessun abbonamento trovato.</ComboboxEmpty>
+              <ComboboxList>
+                {(option: PresetOption) => (
+                  <ComboboxItem
+                    key={option.value}
+                    value={option}
+                    className="py-2"
+                  >
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-md border bg-background">
+                      <ProviderLogo provider={option.provider} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate font-medium">
+                        {option.provider.name}
+                      </span>
+                      <span className="block truncate text-xs text-muted-foreground">
+                        {option.preset.name}
+                      </span>
+                    </span>
+                    <span className="mr-5 shrink-0 text-muted-foreground">
+                      {formatPresetPrice(option.preset.price)}
+                    </span>
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+        </Field>
+      </FieldSet>
+
+      <FieldSeparator>Dettagli modificabili</FieldSeparator>
+
+      <Field>
+        <FieldLabel htmlFor="subscription-name">Titolo</FieldLabel>
+        <Input
+          id="subscription-name"
+          name="name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          placeholder="es. Apple Music"
+          required
+        />
+      </Field>
+      <FieldGroup className="grid gap-4 sm:grid-cols-2">
+        <Field>
+          <FieldLabel htmlFor="subscription-price">Prezzo (€)</FieldLabel>
+          <Input
+            id="subscription-price"
+            name="price"
+            type="number"
+            min="0"
+            step="0.01"
+            value={price}
+            onChange={(event) => setPrice(event.target.value)}
+            placeholder="9,99"
+            required
+          />
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="subscription-cycle">Frequenza</FieldLabel>
+          <Select
+            value={billingCycle}
+            onValueChange={(value) =>
+              value && setBillingCycle(value as BillingCycle)
+            }
+          >
+            <SelectTrigger id="subscription-cycle" className="w-full">
+              <SelectValue>
+                {billingCycle === "monthly" ? "Mensile" : "Annuale"}
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="monthly">Mensile</SelectItem>
+                <SelectItem value="yearly">Annuale</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Field>
+      </FieldGroup>
+      <FieldGroup className="grid gap-4 sm:grid-cols-2">
+        <Field>
+          <FieldLabel htmlFor="subscription-start-date">
+            Data prima iscrizione
+          </FieldLabel>
+          <DatePicker
+            id="subscription-start-date"
+            name="startDate"
+            value={startDate}
+            maxDate={new Date()}
+            onValueChange={setStartDate}
+          />
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="subscription-renewal">
+            Prossimo rinnovo
+          </FieldLabel>
+          <DatePicker
+            id="subscription-renewal"
+            name="renewalDate"
+            value={renewalDate}
+            onValueChange={setRenewalDate}
+          />
+        </Field>
+      </FieldGroup>
+    </FieldGroup>
+  )
+
+  const trigger = (
+    <>
+      <PlusIcon data-icon="inline-start" />
+      Aggiungi
+    </>
+  )
+
+  if (isMobile) {
+    return (
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTrigger render={<Button />}>{trigger}</DrawerTrigger>
+        <DrawerContent className="max-h-[calc(100dvh-1rem)]">
+          <form
+            className="flex min-h-0 flex-1 flex-col"
+            onSubmit={handleSubmit}
+          >
+            <DrawerHeader>
+              <DrawerTitle>Nuovo abbonamento</DrawerTitle>
+              <DrawerDescription>
+                Parti da un preset oppure inserisci una spesa ricorrente
+                manualmente. Ogni campo resta modificabile.
+              </DrawerDescription>
+            </DrawerHeader>
+            <div className="flex-1 overflow-y-auto px-4 py-2">{fields}</div>
+            <DrawerFooter>
+              <Button type="submit">Salva abbonamento</Button>
+              <DrawerClose render={<Button type="button" variant="outline" />}>
+                Annulla
+              </DrawerClose>
+            </DrawerFooter>
+          </form>
+        </DrawerContent>
+      </Drawer>
+    )
+  }
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button />}>
-        <PlusIcon data-icon="inline-start" />
-        Aggiungi
-      </DialogTrigger>
+      <DialogTrigger render={<Button />}>{trigger}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <DialogHeader>
@@ -200,138 +392,7 @@ export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
               manualmente. Ogni campo resta modificabile.
             </DialogDescription>
           </DialogHeader>
-
-          <FieldGroup>
-            <FieldSet>
-              <FieldLegend variant="label">Preset</FieldLegend>
-              <FieldDescription>
-                Cerca un provider o un piano per compilare automaticamente i
-                dettagli.
-              </FieldDescription>
-              <Field>
-                <FieldLabel htmlFor="subscription-preset">
-                  Abbonamento
-                </FieldLabel>
-                <Combobox
-                  items={presetOptions}
-                  value={selectedPresetOption}
-                  onValueChange={choosePreset}
-                  filter={filterPresetOption}
-                >
-                  <ComboboxInput
-                    id="subscription-preset"
-                    className="w-full"
-                    placeholder="Cerca Spotify, Netflix, iCloud…"
-                    showClear
-                  />
-                  <ComboboxContent>
-                    <ComboboxEmpty>Nessun abbonamento trovato.</ComboboxEmpty>
-                    <ComboboxList>
-                      {(option: PresetOption) => (
-                        <ComboboxItem
-                          key={option.value}
-                          value={option}
-                          className="py-2"
-                        >
-                          <span className="flex size-7 shrink-0 items-center justify-center rounded-md border bg-background">
-                            <ProviderLogo provider={option.provider} />
-                          </span>
-                          <span className="min-w-0 flex-1">
-                            <span className="block truncate font-medium">
-                              {option.provider.name}
-                            </span>
-                            <span className="block truncate text-xs text-muted-foreground">
-                              {option.preset.name}
-                            </span>
-                          </span>
-                          <span className="mr-5 shrink-0 text-muted-foreground">
-                            {formatPresetPrice(option.preset.price)}
-                          </span>
-                        </ComboboxItem>
-                      )}
-                    </ComboboxList>
-                  </ComboboxContent>
-                </Combobox>
-              </Field>
-            </FieldSet>
-
-            <FieldSeparator>Dettagli modificabili</FieldSeparator>
-
-            <Field>
-              <FieldLabel htmlFor="subscription-name">Titolo</FieldLabel>
-              <Input
-                id="subscription-name"
-                name="name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                placeholder="es. Apple Music"
-                required
-              />
-            </Field>
-            <FieldGroup className="grid gap-4 sm:grid-cols-2">
-              <Field>
-                <FieldLabel htmlFor="subscription-price">Prezzo (€)</FieldLabel>
-                <Input
-                  id="subscription-price"
-                  name="price"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  value={price}
-                  onChange={(event) => setPrice(event.target.value)}
-                  placeholder="9,99"
-                  required
-                />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="subscription-cycle">Frequenza</FieldLabel>
-                <Select
-                  value={billingCycle}
-                  onValueChange={(value) =>
-                    value && setBillingCycle(value as BillingCycle)
-                  }
-                >
-                  <SelectTrigger id="subscription-cycle" className="w-full">
-                    <SelectValue>
-                      {billingCycle === "monthly" ? "Mensile" : "Annuale"}
-                    </SelectValue>
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="monthly">Mensile</SelectItem>
-                      <SelectItem value="yearly">Annuale</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </Field>
-            </FieldGroup>
-            <FieldGroup className="grid gap-4 sm:grid-cols-2">
-              <Field>
-                <FieldLabel htmlFor="subscription-start-date">
-                  Data prima iscrizione
-                </FieldLabel>
-                <DatePicker
-                  id="subscription-start-date"
-                  name="startDate"
-                  value={startDate}
-                  maxDate={new Date()}
-                  onValueChange={setStartDate}
-                />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="subscription-renewal">
-                  Prossimo rinnovo
-                </FieldLabel>
-                <DatePicker
-                  id="subscription-renewal"
-                  name="renewalDate"
-                  value={renewalDate}
-                  onValueChange={setRenewalDate}
-                />
-              </Field>
-            </FieldGroup>
-          </FieldGroup>
-
+          {fields}
           <DialogFooter>
             <DialogClose render={<Button type="button" variant="outline" />}>
               Annulla
