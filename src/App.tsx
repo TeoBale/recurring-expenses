@@ -1,32 +1,18 @@
 import { useEffect, useMemo, useState } from "react"
-import {
-  ArrowRightIcon,
-  CreditCardIcon,
-  MoonIcon,
-  SunIcon,
-  WalletCardsIcon,
-} from "lucide-react"
+import { ArrowRightIcon, MoonIcon, SunIcon } from "lucide-react"
 
 import { AddSubscriptionDialog } from "@/components/add-subscription-dialog"
 import { LiveSpendCounter } from "@/components/live-spend-counter"
 import { SubscriptionCard } from "@/components/subscription-card"
 import { SubscriptionsEmptyState } from "@/components/subscriptions-empty-state"
+import { SubscriptionsTable } from "@/components/subscriptions-table"
 import { useTheme } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   loadSubscriptions,
   saveSubscriptions,
 } from "@/lib/subscription-storage"
-import { formatCurrency, totalMonthlyCost } from "@/lib/subscriptions"
 import type { Subscription } from "@/types/subscription"
 
 type View = "dashboard" | "subscriptions"
@@ -50,10 +36,15 @@ function App() {
     [subscriptions]
   )
 
-  const monthlyTotal = totalMonthlyCost(subscriptions)
-
   function addSubscription(subscription: Subscription) {
     setSubscriptions((current) => [...current, subscription])
+  }
+
+  function deleteSubscriptions(subscriptionIds: string[]) {
+    const idsToDelete = new Set(subscriptionIds)
+    setSubscriptions((current) =>
+      current.filter((subscription) => !idsToDelete.has(subscription.id))
+    )
   }
 
   function toggleTheme() {
@@ -164,56 +155,10 @@ function App() {
                 onAdd={addSubscription}
               />
             ) : (
-              <>
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <Card size="sm">
-                    <CardHeader>
-                      <CardDescription>Abbonamenti attivi</CardDescription>
-                      <CardTitle className="font-display text-3xl">
-                        {subscriptions.length}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <WalletCardsIcon className="size-4 text-muted-foreground" />
-                    </CardContent>
-                  </Card>
-                  <Card size="sm">
-                    <CardHeader>
-                      <CardDescription>Spesa mensile</CardDescription>
-                      <CardTitle className="font-display text-3xl">
-                        {formatCurrency(monthlyTotal)}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CreditCardIcon className="size-4 text-muted-foreground" />
-                    </CardContent>
-                  </Card>
-                  <Card size="sm">
-                    <CardHeader>
-                      <CardDescription>Proiezione annuale</CardDescription>
-                      <CardTitle className="font-display text-3xl">
-                        {formatCurrency(monthlyTotal * 12)}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-xs text-muted-foreground">
-                        Basata sul totale attuale
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <Separator />
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  {sortedSubscriptions.map((subscription) => (
-                    <SubscriptionCard
-                      key={subscription.id}
-                      subscription={subscription}
-                    />
-                  ))}
-                </div>
-              </>
+              <SubscriptionsTable
+                subscriptions={sortedSubscriptions}
+                onDelete={deleteSubscriptions}
+              />
             )}
           </section>
         </TabsContent>
