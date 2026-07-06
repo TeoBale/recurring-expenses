@@ -1,0 +1,1118 @@
+[
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "logoSvg": {
+      "light": "https://svgl.app/library/spotify.svg",
+      "dark": "https://svgl.app/library/spotify.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "premium-individual",
+        "name": "Premium Individual",
+        "price": 12.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium-student",
+        "name": "Premium Student",
+        "price": 6.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium-duo",
+        "name": "Premium Duo",
+        "price": 17.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium-family",
+        "name": "Premium Family",
+        "price": 20.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "logoSvg": {
+      "light": "https://svgl.app/library/apple.svg",
+      "dark": "https://svgl.app/library/apple_dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "icloud-plus-50gb",
+        "name": "iCloud+ 50GB",
+        "price": 0.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "icloud-plus-200gb",
+        "name": "iCloud+ 200GB",
+        "price": 2.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "icloud-plus-2tb",
+        "name": "iCloud+ 2TB",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "icloud-plus-6tb",
+        "name": "iCloud+ 6TB",
+        "price": 29.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "icloud-plus-12tb",
+        "name": "iCloud+ 12TB",
+        "price": 59.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-one-individual",
+        "name": "Apple One Individual",
+        "price": 19.95,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-one-family",
+        "name": "Apple One Family",
+        "price": 25.95,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-one-premier",
+        "name": "Apple One Premier",
+        "price": 34.95,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-music-individual",
+        "name": "Apple Music Individual",
+        "price": 10.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-music-student",
+        "name": "Apple Music Student",
+        "price": 5.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-music-family",
+        "name": "Apple Music Family",
+        "price": 16.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-tv-plus",
+        "name": "Apple TV+",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-arcade",
+        "name": "Apple Arcade",
+        "price": 6.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-fitness-plus",
+        "name": "Apple Fitness+",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "apple-news-plus",
+        "name": "Apple News+",
+        "price": 12.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "logoSvg": {
+      "light": "https://svgl.app/library/google.svg",
+      "dark": "https://svgl.app/library/google.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "google-one-basic",
+        "name": "Google One Basic",
+        "price": 1.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "google-one-premium",
+        "name": "Google One Premium",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "google-ai-plus",
+        "name": "Google AI Plus",
+        "price": 7.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "google-ai-pro",
+        "name": "Google AI Pro",
+        "price": 21.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "google-ai-ultra",
+        "name": "Google AI Ultra",
+        "price": 274.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "youtube",
+    "name": "YouTube",
+    "logoSvg": {
+      "light": "https://svgl.app/library/youtube.svg",
+      "dark": "https://svgl.app/library/youtube.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "premium-lite",
+        "name": "YouTube Premium Lite",
+        "price": 7.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium-individual",
+        "name": "YouTube Premium Individual",
+        "price": 13.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium-student",
+        "name": "YouTube Premium Student",
+        "price": 8.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium-family",
+        "name": "YouTube Premium Family",
+        "price": 25.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "music-individual",
+        "name": "YouTube Music Premium Individual",
+        "price": 10.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "music-student",
+        "name": "YouTube Music Premium Student",
+        "price": 5.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "music-family",
+        "name": "YouTube Music Premium Family",
+        "price": 17.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "netflix",
+    "name": "Netflix",
+    "logoSvg": {
+      "light": "https://svgl.app/library/netflix-icon.svg",
+      "dark": "https://svgl.app/library/netflix-icon.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "standard-with-ads",
+        "name": "Standard with ads",
+        "price": 6.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "standard",
+        "name": "Standard",
+        "price": 13.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "price": 19.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "disney-plus",
+    "name": "Disney+",
+    "logoSvg": {
+      "light": "https://svgl.app/library/disneyplus.svg",
+      "dark": "https://svgl.app/library/disneyplus.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "standard-with-ads",
+        "name": "Standard with Ads",
+        "price": 6.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "standard",
+        "name": "Standard",
+        "price": 10.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "price": 15.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "prime-video",
+    "name": "Prime Video",
+    "logoSvg": {
+      "light": "https://svgl.app/library/prime-video.svg",
+      "dark": "https://svgl.app/library/prime-video.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "amazon-prime-monthly",
+        "name": "Amazon Prime Monthly",
+        "price": 4.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "amazon-prime-annual",
+        "name": "Amazon Prime Annual",
+        "price": 49.9,
+        "billingCycle": "yearly"
+      },
+      {
+        "id": "prime-video-ad-free",
+        "name": "Prime Video Ad Free",
+        "price": 2.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "hulu",
+    "name": "Hulu",
+    "logoSvg": {
+      "light": "https://svgl.app/library/hulu.svg",
+      "dark": "https://svgl.app/library/hulu-dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "with-ads",
+        "name": "Hulu (With Ads)",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "no-ads",
+        "name": "Hulu (No Ads)",
+        "price": 18.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "live-tv-with-ads",
+        "name": "Hulu + Live TV (With Ads)",
+        "price": 82.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "live-tv-no-ads",
+        "name": "Hulu + Live TV (No Ads)",
+        "price": 95.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "tidal",
+    "name": "TIDAL",
+    "logoSvg": {
+      "light": "https://svgl.app/library/tidal_light.svg",
+      "dark": "https://svgl.app/library/tidal_dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "individual",
+        "name": "Individual",
+        "price": 10.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "student",
+        "name": "Student",
+        "price": 5.49,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "family",
+        "name": "Family",
+        "price": 16.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "dj-extension",
+        "name": "DJ Extension",
+        "price": 9,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "soundcloud",
+    "name": "SoundCloud",
+    "logoSvg": {
+      "light": "https://svgl.app/library/soundcloud-logo.svg",
+      "dark": "https://svgl.app/library/soundcloud-logo_dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "go",
+        "name": "SoundCloud Go",
+        "price": 5.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "go-plus",
+        "name": "SoundCloud Go+",
+        "price": 10.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "dj",
+        "name": "SoundCloud DJ",
+        "price": 19.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "artist",
+        "name": "Artist",
+        "price": 39,
+        "billingCycle": "yearly"
+      },
+      {
+        "id": "artist-pro",
+        "name": "Artist Pro",
+        "price": 99,
+        "billingCycle": "yearly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "logoSvg": {
+      "light": "https://svgl.app/library/microsoft.svg",
+      "dark": "https://svgl.app/library/microsoft.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "microsoft-365-basic",
+        "name": "Microsoft 365 Basic",
+        "price": 2,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "microsoft-365-personal",
+        "name": "Microsoft 365 Personal",
+        "price": 10,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "microsoft-365-family",
+        "name": "Microsoft 365 Family",
+        "price": 13,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "microsoft-365-premium",
+        "name": "Microsoft 365 Premium",
+        "price": 22,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "dropbox",
+    "name": "Dropbox",
+    "logoSvg": {
+      "light": "https://svgl.app/library/dropbox.svg",
+      "dark": "https://svgl.app/library/dropbox.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "plus",
+        "name": "Plus",
+        "price": 11.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "essentials",
+        "name": "Essentials",
+        "price": 19.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "price": 15,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "business-plus",
+        "name": "Business Plus",
+        "price": 24,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "proton",
+    "name": "Proton",
+    "logoSvg": {
+      "light": "https://svgl.app/library/protonmail.svg",
+      "dark": "https://svgl.app/library/protonmail.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "mail-plus",
+        "name": "Mail Plus",
+        "price": 4.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "vpn-plus",
+        "name": "VPN Plus",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "drive-plus",
+        "name": "Drive Plus",
+        "price": 4.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "pass-plus",
+        "name": "Pass Plus",
+        "price": 4.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "unlimited",
+        "name": "Proton Unlimited",
+        "price": 12.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "duo",
+        "name": "Proton Duo",
+        "price": 19.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "family",
+        "name": "Proton Family",
+        "price": 29.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "visionary",
+        "name": "Proton Visionary",
+        "price": 39.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "adobe",
+    "name": "Adobe",
+    "logoSvg": {
+      "light": "https://svgl.app/library/adobe.svg",
+      "dark": "https://svgl.app/library/adobe.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "acrobat-standard",
+        "name": "Acrobat Standard",
+        "price": 15.85,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "acrobat-pro",
+        "name": "Acrobat Pro",
+        "price": 24.39,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "photography",
+        "name": "Photography",
+        "price": 19.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "lightroom",
+        "name": "Lightroom",
+        "price": 14.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "creative-cloud-standard",
+        "name": "Creative Cloud Standard",
+        "price": 56.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "creative-cloud-pro",
+        "name": "Creative Cloud Pro",
+        "price": 78.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "single-app",
+        "name": "Creative Cloud Single App",
+        "price": 26.64,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "canva",
+    "name": "Canva",
+    "logoSvg": {
+      "light": "https://svgl.app/library/canva.svg",
+      "dark": "https://svgl.app/library/canva.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "pro",
+        "name": "Canva Pro",
+        "price": 15,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "business",
+        "name": "Canva Business",
+        "price": 20,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise",
+        "name": "Canva Enterprise",
+        "price": 30,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "logoSvg": {
+      "light": "https://svgl.app/library/figma.svg",
+      "dark": "https://svgl.app/library/figma.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "professional",
+        "name": "Professional",
+        "price": 16,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "organization",
+        "name": "Organization",
+        "price": 55,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "price": 90,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "logoSvg": {
+      "light": "https://svgl.app/library/notion.svg",
+      "dark": "https://svgl.app/library/notion.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "plus",
+        "name": "Plus",
+        "price": 11.5,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "price": 23.5,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "price": 29,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "todoist",
+    "name": "Todoist",
+    "logoSvg": {
+      "light": "https://svgl.app/library/todoist.svg",
+      "dark": "https://svgl.app/library/todoist.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "pro",
+        "name": "Pro",
+        "price": 5,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "price": 8,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "logoSvg": {
+      "light": "https://svgl.app/library/slack.svg",
+      "dark": "https://svgl.app/library/slack.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "pro",
+        "name": "Pro",
+        "price": 8.25,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "business-plus",
+        "name": "Business+",
+        "price": 18,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise-plus",
+        "name": "Enterprise+",
+        "price": 30,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "logoSvg": {
+      "light": "https://svgl.app/library/zoom.svg",
+      "dark": "https://svgl.app/library/zoom.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "workplace-pro",
+        "name": "Zoom Workplace Pro",
+        "price": 15.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "workplace-business",
+        "name": "Zoom Workplace Business",
+        "price": 21.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "workplace-business-plus",
+        "name": "Zoom Workplace Business Plus",
+        "price": 26.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "workplace-enterprise",
+        "name": "Zoom Workplace Enterprise",
+        "price": 29.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "logoSvg": {
+      "light": "https://svgl.app/library/openai.svg",
+      "dark": "https://svgl.app/library/openai_dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "chatgpt-go",
+        "name": "ChatGPT Go",
+        "price": 8,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "chatgpt-plus",
+        "name": "ChatGPT Plus",
+        "price": 23,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "chatgpt-pro",
+        "name": "ChatGPT Pro",
+        "price": 229,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "chatgpt-business",
+        "name": "ChatGPT Business",
+        "price": 29,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "chatgpt-enterprise",
+        "name": "ChatGPT Enterprise",
+        "price": 60,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "claude",
+    "name": "Claude AI",
+    "logoSvg": {
+      "light": "https://svgl.app/library/claude-ai-icon.svg",
+      "dark": "https://svgl.app/library/claude-ai-icon.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "pro",
+        "name": "Claude Pro",
+        "price": 20,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "max-5x",
+        "name": "Claude Max 5x",
+        "price": 100,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "max-20x",
+        "name": "Claude Max 20x",
+        "price": 200,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "team",
+        "name": "Claude Team",
+        "price": 30,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise",
+        "name": "Claude Enterprise",
+        "price": 60,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity AI",
+    "logoSvg": {
+      "light": "https://svgl.app/library/perplexity.svg",
+      "dark": "https://svgl.app/library/perplexity.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "pro",
+        "name": "Perplexity Pro",
+        "price": 20,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "max",
+        "name": "Perplexity Max",
+        "price": 200,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise-pro",
+        "name": "Enterprise Pro",
+        "price": 40,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "enterprise-max",
+        "name": "Enterprise Max",
+        "price": 200,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "logoSvg": {
+      "light": "https://svgl.app/library/midjourney.svg",
+      "dark": "https://svgl.app/library/midjourney-dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "basic",
+        "name": "Basic",
+        "price": 10,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "standard",
+        "name": "Standard",
+        "price": 30,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "pro",
+        "name": "Pro",
+        "price": 60,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "mega",
+        "name": "Mega",
+        "price": 120,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "logoSvg": {
+      "light": "https://svgl.app/library/github_light.svg",
+      "dark": "https://svgl.app/library/github_dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "github-pro",
+        "name": "GitHub Pro",
+        "price": 4,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "copilot-pro",
+        "name": "GitHub Copilot Pro",
+        "price": 10,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "copilot-pro-plus",
+        "name": "GitHub Copilot Pro+",
+        "price": 39,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "copilot-business",
+        "name": "GitHub Copilot Business",
+        "price": 19,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "copilot-enterprise",
+        "name": "GitHub Copilot Enterprise",
+        "price": 39,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "logoSvg": {
+      "light": "https://svgl.app/library/discord.svg",
+      "dark": "https://svgl.app/library/discord.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "nitro-basic",
+        "name": "Nitro Basic",
+        "price": 2.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "nitro",
+        "name": "Nitro",
+        "price": 9.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "xbox",
+    "name": "Xbox",
+    "logoSvg": {
+      "light": "https://svgl.app/library/xbox.svg",
+      "dark": "https://svgl.app/library/xbox.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "game-pass-essential",
+        "name": "Xbox Game Pass Essential",
+        "price": 8.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "game-pass-premium",
+        "name": "Xbox Game Pass Premium",
+        "price": 12.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "game-pass-ultimate",
+        "name": "Xbox Game Pass Ultimate",
+        "price": 26.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "pc-game-pass",
+        "name": "PC Game Pass",
+        "price": 14.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "playstation",
+    "name": "PlayStation",
+    "logoSvg": {
+      "light": "https://svgl.app/library/playstation.svg",
+      "dark": "https://svgl.app/library/playstation.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "plus-essential",
+        "name": "PlayStation Plus Essential",
+        "price": 8.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "plus-extra",
+        "name": "PlayStation Plus Extra",
+        "price": 13.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "plus-premium",
+        "name": "PlayStation Plus Premium",
+        "price": 16.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  },
+  {
+    "id": "nvidia",
+    "name": "NVIDIA",
+    "logoSvg": {
+      "light": "https://svgl.app/library/nvidia-icon-light.svg",
+      "dark": "https://svgl.app/library/nvidia-icon-dark.svg"
+    },
+    "subscriptions": [
+      {
+        "id": "geforce-now-performance",
+        "name": "GeForce NOW Performance",
+        "price": 10.99,
+        "billingCycle": "monthly"
+      },
+      {
+        "id": "geforce-now-ultimate",
+        "name": "GeForce NOW Ultimate",
+        "price": 21.99,
+        "billingCycle": "monthly"
+      }
+    ],
+    "market": "IT",
+    "currency": "EUR"
+  }
+]

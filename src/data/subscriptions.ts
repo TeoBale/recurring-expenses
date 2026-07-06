@@ -14,12 +14,19 @@ function dateAfter(days: number) {
   return date.toISOString().slice(0, 10)
 }
 
+function dateBefore(days: number) {
+  const date = new Date()
+  date.setDate(date.getDate() - days)
+  return date.toISOString().slice(0, 10)
+}
+
 export const initialSubscriptions: Subscription[] = [
   {
     id: "spotify",
     name: "Spotify",
     price: 10.99,
     billingCycle: "monthly",
+    startDate: dateBefore(420),
     renewalDate: dateAfter(1),
     icon: Music2Icon,
   },
@@ -28,6 +35,7 @@ export const initialSubscriptions: Subscription[] = [
     name: "YouTube Premium",
     price: 13.99,
     billingCycle: "monthly",
+    startDate: dateBefore(280),
     renewalDate: dateAfter(4),
     icon: PlayIcon,
   },
@@ -36,6 +44,7 @@ export const initialSubscriptions: Subscription[] = [
     name: "Netflix",
     price: 15.99,
     billingCycle: "monthly",
+    startDate: dateBefore(730),
     renewalDate: dateAfter(8),
     icon: Tv2Icon,
   },
@@ -44,6 +53,7 @@ export const initialSubscriptions: Subscription[] = [
     name: "iCloud+",
     price: 2.99,
     billingCycle: "monthly",
+    startDate: dateBefore(180),
     renewalDate: dateAfter(12),
     icon: CloudIcon,
   },
@@ -52,6 +62,7 @@ export const initialSubscriptions: Subscription[] = [
     name: "Figma",
     price: 144,
     billingCycle: "yearly",
+    startDate: dateBefore(500),
     renewalDate: dateAfter(42),
     icon: LayoutGridIcon,
   },

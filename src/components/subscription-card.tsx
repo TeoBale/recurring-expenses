@@ -1,4 +1,8 @@
-import { ArrowUpRightIcon, CalendarDaysIcon } from "lucide-react"
+import {
+  ArrowUpRightIcon,
+  CalendarDaysIcon,
+  CircleDollarSignIcon,
+} from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -28,7 +32,7 @@ export function SubscriptionCard({
   subscription,
   compact = false,
 }: SubscriptionCardProps) {
-  const Icon = subscription.icon
+  const Icon = subscription.icon ?? CircleDollarSignIcon
   const cycleLabel =
     subscription.billingCycle === "monthly" ? "/ mese" : "/ anno"
   const spentThisMonth = monthlyCost(subscription) * monthProgress(new Date())
@@ -38,7 +42,22 @@ export function SubscriptionCard({
       <CardHeader>
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted">
-            <Icon className="size-5" aria-hidden="true" />
+            {subscription.logoSvg ? (
+              <>
+                <img
+                  src={subscription.logoSvg.light}
+                  alt=""
+                  className="max-h-6 max-w-6 object-contain dark:hidden"
+                />
+                <img
+                  src={subscription.logoSvg.dark}
+                  alt=""
+                  className="hidden max-h-6 max-w-6 object-contain dark:block"
+                />
+              </>
+            ) : (
+              <Icon className="size-5" aria-hidden="true" />
+            )}
           </div>
           <div className="min-w-0">
             <CardTitle className="truncate">{subscription.name}</CardTitle>
