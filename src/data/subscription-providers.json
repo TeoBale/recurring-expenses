@@ -3,8 +3,8 @@
     "id": "spotify",
     "name": "Spotify",
     "logoSvg": {
-      "light": "https://svgl.app/library/spotify.svg",
-      "dark": "https://svgl.app/library/spotify.svg"
+      "light": "provider-logos/spotify.svg",
+      "dark": "provider-logos/spotify.svg"
     },
     "subscriptions": [
       {
@@ -39,8 +39,8 @@
     "id": "apple",
     "name": "Apple",
     "logoSvg": {
-      "light": "https://svgl.app/library/apple.svg",
-      "dark": "https://svgl.app/library/apple_dark.svg"
+      "light": "provider-logos/apple.svg",
+      "dark": "provider-logos/apple_dark.svg"
     },
     "subscriptions": [
       {
@@ -141,8 +141,8 @@
     "id": "google",
     "name": "Google",
     "logoSvg": {
-      "light": "https://svgl.app/library/google.svg",
-      "dark": "https://svgl.app/library/google.svg"
+      "light": "provider-logos/google.svg",
+      "dark": "provider-logos/google.svg"
     },
     "subscriptions": [
       {
@@ -183,8 +183,8 @@
     "id": "youtube",
     "name": "YouTube",
     "logoSvg": {
-      "light": "https://svgl.app/library/youtube.svg",
-      "dark": "https://svgl.app/library/youtube.svg"
+      "light": "provider-logos/youtube.svg",
+      "dark": "provider-logos/youtube.svg"
     },
     "subscriptions": [
       {
@@ -237,8 +237,8 @@
     "id": "netflix",
     "name": "Netflix",
     "logoSvg": {
-      "light": "https://svgl.app/library/netflix-icon.svg",
-      "dark": "https://svgl.app/library/netflix-icon.svg"
+      "light": "provider-logos/netflix-icon.svg",
+      "dark": "provider-logos/netflix-icon.svg"
     },
     "subscriptions": [
       {
@@ -267,8 +267,8 @@
     "id": "disney-plus",
     "name": "Disney+",
     "logoSvg": {
-      "light": "https://svgl.app/library/disneyplus.svg",
-      "dark": "https://svgl.app/library/disneyplus.svg"
+      "light": "provider-logos/disneyplus.svg",
+      "dark": "provider-logos/disneyplus.svg"
     },
     "subscriptions": [
       {
@@ -297,8 +297,8 @@
     "id": "prime-video",
     "name": "Prime Video",
     "logoSvg": {
-      "light": "https://svgl.app/library/prime-video.svg",
-      "dark": "https://svgl.app/library/prime-video.svg"
+      "light": "provider-logos/prime-video.svg",
+      "dark": "provider-logos/prime-video.svg"
     },
     "subscriptions": [
       {
@@ -327,8 +327,8 @@
     "id": "hulu",
     "name": "Hulu",
     "logoSvg": {
-      "light": "https://svgl.app/library/hulu.svg",
-      "dark": "https://svgl.app/library/hulu-dark.svg"
+      "light": "provider-logos/hulu.svg",
+      "dark": "provider-logos/hulu-dark.svg"
     },
     "subscriptions": [
       {
@@ -363,8 +363,8 @@
     "id": "tidal",
     "name": "TIDAL",
     "logoSvg": {
-      "light": "https://svgl.app/library/tidal_light.svg",
-      "dark": "https://svgl.app/library/tidal_dark.svg"
+      "light": "provider-logos/tidal_light.svg",
+      "dark": "provider-logos/tidal_dark.svg"
     },
     "subscriptions": [
       {
@@ -399,8 +399,8 @@
     "id": "soundcloud",
     "name": "SoundCloud",
     "logoSvg": {
-      "light": "https://svgl.app/library/soundcloud-logo.svg",
-      "dark": "https://svgl.app/library/soundcloud-logo_dark.svg"
+      "light": "provider-logos/soundcloud-logo.svg",
+      "dark": "provider-logos/soundcloud-logo_dark.svg"
     },
     "subscriptions": [
       {
@@ -441,8 +441,8 @@
     "id": "microsoft",
     "name": "Microsoft",
     "logoSvg": {
-      "light": "https://svgl.app/library/microsoft.svg",
-      "dark": "https://svgl.app/library/microsoft.svg"
+      "light": "provider-logos/microsoft.svg",
+      "dark": "provider-logos/microsoft.svg"
     },
     "subscriptions": [
       {
@@ -477,8 +477,8 @@
     "id": "dropbox",
     "name": "Dropbox",
     "logoSvg": {
-      "light": "https://svgl.app/library/dropbox.svg",
-      "dark": "https://svgl.app/library/dropbox.svg"
+      "light": "provider-logos/dropbox.svg",
+      "dark": "provider-logos/dropbox.svg"
     },
     "subscriptions": [
       {
@@ -513,8 +513,8 @@
     "id": "proton",
     "name": "Proton",
     "logoSvg": {
-      "light": "https://svgl.app/library/protonmail.svg",
-      "dark": "https://svgl.app/library/protonmail.svg"
+      "light": "provider-logos/protonmail.svg",
+      "dark": "provider-logos/protonmail.svg"
     },
     "subscriptions": [
       {
@@ -573,8 +573,8 @@
     "id": "adobe",
     "name": "Adobe",
     "logoSvg": {
-      "light": "https://svgl.app/library/adobe.svg",
-      "dark": "https://svgl.app/library/adobe.svg"
+      "light": "provider-logos/adobe.svg",
+      "dark": "provider-logos/adobe.svg"
     },
     "subscriptions": [
       {
@@ -627,8 +627,8 @@
     "id": "canva",
     "name": "Canva",
     "logoSvg": {
-      "light": "https://svgl.app/library/canva.svg",
-      "dark": "https://svgl.app/library/canva.svg"
+      "light": "provider-logos/canva.svg",
+      "dark": "provider-logos/canva.svg"
     },
     "subscriptions": [
       {
@@ -657,8 +657,8 @@
     "id": "figma",
     "name": "Figma",
     "logoSvg": {
-      "light": "https://svgl.app/library/figma.svg",
-      "dark": "https://svgl.app/library/figma.svg"
+      "light": "provider-logos/figma.svg",
+      "dark": "provider-logos/figma.svg"
     },
     "subscriptions": [
       {
@@ -687,8 +687,8 @@
     "id": "notion",
     "name": "Notion",
     "logoSvg": {
-      "light": "https://svgl.app/library/notion.svg",
-      "dark": "https://svgl.app/library/notion.svg"
+      "light": "provider-logos/notion.svg",
+      "dark": "provider-logos/notion.svg"
     },
     "subscriptions": [
       {
@@ -717,8 +717,8 @@
     "id": "todoist",
     "name": "Todoist",
     "logoSvg": {
-      "light": "https://svgl.app/library/todoist.svg",
-      "dark": "https://svgl.app/library/todoist.svg"
+      "light": "provider-logos/todoist.svg",
+      "dark": "provider-logos/todoist.svg"
     },
     "subscriptions": [
       {
@@ -741,8 +741,8 @@
     "id": "slack",
     "name": "Slack",
     "logoSvg": {
-      "light": "https://svgl.app/library/slack.svg",
-      "dark": "https://svgl.app/library/slack.svg"
+      "light": "provider-logos/slack.svg",
+      "dark": "provider-logos/slack.svg"
     },
     "subscriptions": [
       {
@@ -771,8 +771,8 @@
     "id": "zoom",
     "name": "Zoom",
     "logoSvg": {
-      "light": "https://svgl.app/library/zoom.svg",
-      "dark": "https://svgl.app/library/zoom.svg"
+      "light": "provider-logos/zoom.svg",
+      "dark": "provider-logos/zoom.svg"
     },
     "subscriptions": [
       {
@@ -807,8 +807,8 @@
     "id": "openai",
     "name": "OpenAI",
     "logoSvg": {
-      "light": "https://svgl.app/library/openai.svg",
-      "dark": "https://svgl.app/library/openai_dark.svg"
+      "light": "provider-logos/openai.svg",
+      "dark": "provider-logos/openai_dark.svg"
     },
     "subscriptions": [
       {
@@ -849,8 +849,8 @@
     "id": "claude",
     "name": "Claude AI",
     "logoSvg": {
-      "light": "https://svgl.app/library/claude-ai-icon.svg",
-      "dark": "https://svgl.app/library/claude-ai-icon.svg"
+      "light": "provider-logos/claude-ai-icon.svg",
+      "dark": "provider-logos/claude-ai-icon.svg"
     },
     "subscriptions": [
       {
@@ -891,8 +891,8 @@
     "id": "perplexity",
     "name": "Perplexity AI",
     "logoSvg": {
-      "light": "https://svgl.app/library/perplexity.svg",
-      "dark": "https://svgl.app/library/perplexity.svg"
+      "light": "provider-logos/perplexity.svg",
+      "dark": "provider-logos/perplexity.svg"
     },
     "subscriptions": [
       {
@@ -927,8 +927,8 @@
     "id": "midjourney",
     "name": "Midjourney",
     "logoSvg": {
-      "light": "https://svgl.app/library/midjourney.svg",
-      "dark": "https://svgl.app/library/midjourney-dark.svg"
+      "light": "provider-logos/midjourney.svg",
+      "dark": "provider-logos/midjourney-dark.svg"
     },
     "subscriptions": [
       {
@@ -963,8 +963,8 @@
     "id": "github",
     "name": "GitHub",
     "logoSvg": {
-      "light": "https://svgl.app/library/github_light.svg",
-      "dark": "https://svgl.app/library/github_dark.svg"
+      "light": "provider-logos/github_light.svg",
+      "dark": "provider-logos/github_dark.svg"
     },
     "subscriptions": [
       {
@@ -1005,8 +1005,8 @@
     "id": "discord",
     "name": "Discord",
     "logoSvg": {
-      "light": "https://svgl.app/library/discord.svg",
-      "dark": "https://svgl.app/library/discord.svg"
+      "light": "provider-logos/discord.svg",
+      "dark": "provider-logos/discord.svg"
     },
     "subscriptions": [
       {
@@ -1029,8 +1029,8 @@
     "id": "xbox",
     "name": "Xbox",
     "logoSvg": {
-      "light": "https://svgl.app/library/xbox.svg",
-      "dark": "https://svgl.app/library/xbox.svg"
+      "light": "provider-logos/xbox.svg",
+      "dark": "provider-logos/xbox.svg"
     },
     "subscriptions": [
       {
@@ -1065,8 +1065,8 @@
     "id": "playstation",
     "name": "PlayStation",
     "logoSvg": {
-      "light": "https://svgl.app/library/playstation.svg",
-      "dark": "https://svgl.app/library/playstation.svg"
+      "light": "provider-logos/playstation.svg",
+      "dark": "provider-logos/playstation.svg"
     },
     "subscriptions": [
       {
@@ -1095,8 +1095,8 @@
     "id": "nvidia",
     "name": "NVIDIA",
     "logoSvg": {
-      "light": "https://svgl.app/library/nvidia-icon-light.svg",
-      "dark": "https://svgl.app/library/nvidia-icon-dark.svg"
+      "light": "provider-logos/nvidia-icon-light.svg",
+      "dark": "provider-logos/nvidia-icon-dark.svg"
     },
     "subscriptions": [
       {
