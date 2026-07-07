@@ -14,6 +14,7 @@ and update your row when done.
 | 002  | Fix date-only subscription logic across the app | P1 | M | 001 | DONE |
 | 003  | Vendor provider logos locally and remove third-party fetches | P1 | M | 001 | DONE |
 | 004  | Lazy-load subscription management surfaces to shrink initial JS | P2 | M | 001 | DONE |
+| 005  | Convert the subscriptions archive to an overlay-based data table | P2 | M | 001, 004 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale — finding fixed independently or approach
@@ -27,6 +28,8 @@ abandoned)
   instead of relying only on manual spot checks.
 - 004 depends on 001 because code-splitting and lazy boundaries should land
   with at least one automated render/build safety net.
+- 005 depends on 001 for the existing test harness and on 004 because it
+  changes the lazy-loaded archive surface introduced there.
 
 ## Findings considered and rejected
 

@@ -19,6 +19,26 @@ function findButton(label: string) {
   )
 }
 
+function findButtonContainingText(label: string) {
+  return Array.from(document.querySelectorAll("button")).find((button) =>
+    button.textContent?.includes(label)
+  )
+}
+
+function findButtonByAriaLabel(label: string) {
+  return document.querySelector(
+    `button[aria-label="${label}"]`
+  ) as HTMLButtonElement | null
+}
+
+function getVisibleTableNames() {
+  return Array.from(document.querySelectorAll("tbody tr"))
+    .map((row) =>
+      row.querySelector("td:nth-child(2) p")?.textContent?.trim() ?? null
+    )
+    .filter((value): value is string => Boolean(value))
+}
+
 async function waitFor<T>(
   callback: () => T | null | undefined,
   timeoutMs = 3000
@@ -151,6 +171,130 @@ describe("App lazy subscription surfaces", () => {
 
     expect(searchInput).toBeInstanceOf(HTMLInputElement)
     expect(document.body.textContent).toContain("Netflix Standard")
+
+    await cleanup()
+  })
+
+  it("shows filter and sort controls in overlays and applies them to the archive", async () => {
+    const { cleanup, container } = await renderApp([
+      {
+        id: "spotify",
+        name: "Spotify Premium",
+        price: 10.99,
+        billingCycle: "monthly",
+        startDate: "2025-10-01",
+        renewalDate: "2026-07-14",
+      },
+      {
+        id: "superhuman",
+        name: "Superhuman",
+        price: 30,
+        billingCycle: "yearly",
+        startDate: "2026-01-15",
+        renewalDate: "2026-07-21",
+      },
+      {
+        id: "notion",
+        name: "Notion AI",
+        price: 120,
+        billingCycle: "yearly",
+        startDate: "2024-11-03",
+        renewalDate: "2026-08-01",
+      },
+    ])
+
+    const subscriptionsTab = findButton("Abbonamenti")
+    expect(subscriptionsTab).toBeDefined()
+
+    await act(async () => {
+      subscriptionsTab?.click()
+    })
+
+    await waitFor(() =>
+      document.querySelector('input[aria-label="Cerca abbonamento"]')
+        ? true
+        : null
+    )
+
+    expect(document.body.textContent).not.toContain("Affina archivio")
+    expect(getVisibleTableNames()).toEqual([
+      "Spotify Premium",
+      "Superhuman",
+      "Notion AI",
+    ])
+
+    const filterButton = findButtonByAriaLabel("Filtra abbonamenti")
+    expect(filterButton).toBeInstanceOf(HTMLButtonElement)
+
+    await act(async () => {
+      filterButton?.click()
+    })
+
+    await waitFor(() =>
+      document.body.textContent?.includes("Affina archivio") ? true : null
+    )
+
+    expect(container.textContent).not.toContain("Affina archivio")
+
+    const yearlyFilter = findButton("Annuali")
+    expect(yearlyFilter).toBeDefined()
+
+    await act(async () => {
+      yearlyFilter?.click()
+    })
+
+    await waitFor(() =>
+      getVisibleTableNames().length === 2 ? true : null
+    )
+
+    expect(getVisibleTableNames()).toEqual(["Superhuman", "Notion AI"])
+
+    const resetFiltersButton = findButton("Azzera filtri")
+    expect(resetFiltersButton).toBeDefined()
+
+    await act(async () => {
+      resetFiltersButton?.click()
+    })
+
+    await waitFor(() =>
+      getVisibleTableNames().length === 3 ? true : null
+    )
+
+    expect(getVisibleTableNames()).toEqual([
+      "Spotify Premium",
+      "Superhuman",
+      "Notion AI",
+    ])
+
+    const sortButton = findButtonByAriaLabel("Ordina abbonamenti")
+    expect(sortButton).toBeInstanceOf(HTMLButtonElement)
+
+    await act(async () => {
+      sortButton?.click()
+    })
+
+    await waitFor(() =>
+      document.body.textContent?.includes("Ordina archivio") ? true : null
+    )
+
+    expect(container.textContent).not.toContain("Ordina archivio")
+
+    const priceDescending = findButtonContainingText("Prezzo decrescente")
+    expect(priceDescending).toBeDefined()
+
+    await act(async () => {
+      priceDescending?.click()
+    })
+
+    await waitFor(() =>
+      getVisibleTableNames()[0] === "Notion AI" ? true : null
+    )
+
+    expect(getVisibleTableNames()).toEqual([
+      "Notion AI",
+      "Superhuman",
+      "Spotify Premium",
+    ])
 
     await cleanup()
   })
