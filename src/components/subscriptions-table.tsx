@@ -45,7 +45,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { formatCurrency, formatRenewalDate } from "@/lib/subscriptions"
+import { compareDateOnly, formatDateOnlyForLocale } from "@/lib/date-only"
+import {
+  formatCurrency,
+  formatRenewalDate,
+  matchesRenewalFilter,
+  type RenewalFilter,
+} from "@/lib/subscriptions"
 import type { Subscription } from "@/types/subscription"
 
 type SubscriptionsTableProps = {
@@ -54,7 +60,6 @@ type SubscriptionsTableProps = {
 }
 
 type CycleFilter = "all" | Subscription["billingCycle"]
-type RenewalFilter = "all" | "overdue" | "7-days" | "30-days" | "90-days"
 type SortOption =
   "renewal-asc" | "name-asc" | "price-asc" | "price-desc" | "start-desc"
 
@@ -81,11 +86,11 @@ const sortLabels: Record<SortOption, string> = {
 }
 
 function formatStartDate(value: string) {
-  return new Intl.DateTimeFormat("it-IT", {
+  return formatDateOnlyForLocale(value, {
     day: "numeric",
     month: "short",
     year: "numeric",
-  }).format(new Date(`${value}T12:00:00`))
+  })
 }
 
 function SubscriptionLogo({ subscription }: { subscription: Subscription }) {
@@ -113,24 +118,6 @@ function SubscriptionLogo({ subscription }: { subscription: Subscription }) {
   )
 }
 
-function isWithinRenewalFilter(
-  subscription: Subscription,
-  filter: RenewalFilter
-) {
-  if (filter === "all") return true
-
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-  const renewalDate = new Date(`${subscription.renewalDate}T12:00:00`)
-  const daysUntilRenewal =
-    (renewalDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
-
-  if (filter === "overdue") return daysUntilRenewal < 0
-
-  const maximumDays = Number(filter.split("-")[0])
-  return daysUntilRenewal >= 0 && daysUntilRenewal <= maximumDays
-}
-
 export function SubscriptionsTable({
   subscriptions,
   onDelete,
@@ -152,7 +139,7 @@ export function SubscriptionsTable({
           .toLocaleLowerCase("it-IT")
           .includes(normalizedQuery) &&
         (cycleFilter === "all" || subscription.billingCycle === cycleFilter) &&
-        isWithinRenewalFilter(subscription, renewalFilter)
+        matchesRenewalFilter(subscription.renewalDate, renewalFilter)
     )
 
     return filteredSubscriptions.toSorted((a, b) => {
@@ -161,8 +148,8 @@ export function SubscriptionsTable({
       if (sortOption === "price-asc") return a.price - b.price
       if (sortOption === "price-desc") return b.price - a.price
       if (sortOption === "start-desc")
-        return b.startDate.localeCompare(a.startDate)
-      return a.renewalDate.localeCompare(b.renewalDate)
+        return compareDateOnly(b.startDate, a.startDate)
+      return compareDateOnly(a.renewalDate, b.renewalDate)
     })
   }, [cycleFilter, query, renewalFilter, sortOption, subscriptions])
 

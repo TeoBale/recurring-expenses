@@ -22,6 +22,7 @@ import {
   loadSubscriptions,
   saveSubscriptions,
 } from "@/lib/subscription-storage"
+import { compareDateOnly } from "@/lib/date-only"
 import { cn } from "@/lib/utils"
 import { useLiveSpend } from "@/hooks/use-live-spend"
 import type { Subscription } from "@/types/subscription"
@@ -48,9 +49,8 @@ function App() {
 
   const sortedSubscriptions = useMemo(
     () =>
-      [...subscriptions].sort(
-        (a, b) =>
-          new Date(a.renewalDate).getTime() - new Date(b.renewalDate).getTime()
+      [...subscriptions].sort((a, b) =>
+        compareDateOnly(a.renewalDate, b.renewalDate)
       ),
     [subscriptions]
   )

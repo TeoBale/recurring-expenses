@@ -3,6 +3,7 @@ import { format } from "date-fns"
 import { it } from "date-fns/locale"
 import { CalendarIcon } from "lucide-react"
 
+import { formatDateOnly, parseDateOnly } from "@/lib/date-only"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import {
@@ -16,17 +17,11 @@ type DatePickerProps = {
   name: string
   value: string
   onValueChange: (value: string) => void
-  maxDate?: Date
+  maxDate?: string
 }
 
-function parseDate(value: string) {
-  const [year, month, day] = value.split("-").map(Number)
-  return new Date(year, month - 1, day)
-}
-
-function serializeDate(date: Date) {
-  return format(date, "yyyy-MM-dd")
-}
+const START_MONTH = parseDateOnly("1990-01-01")
+const END_MONTH = parseDateOnly("2100-12-31")
 
 export function DatePicker({
   id,
@@ -36,14 +31,15 @@ export function DatePicker({
   maxDate,
 }: DatePickerProps) {
   const [open, setOpen] = useState(false)
-  const selectedDate = parseDate(value)
+  const selectedDate = parseDateOnly(value)
+  const maximumDate = maxDate ? parseDateOnly(maxDate) : END_MONTH
 
   function selectDate(date: Date | undefined) {
     if (!date) {
       return
     }
 
-    onValueChange(serializeDate(date))
+    onValueChange(formatDateOnly(date))
     setOpen(false)
   }
 
@@ -71,9 +67,9 @@ export function DatePicker({
             onSelect={selectDate}
             locale={it}
             captionLayout="dropdown"
-            startMonth={new Date(1990, 0)}
-            endMonth={maxDate ?? new Date(2100, 11)}
-            disabled={maxDate ? { after: maxDate } : undefined}
+            startMonth={START_MONTH}
+            endMonth={maximumDate}
+            disabled={maxDate ? { after: maximumDate } : undefined}
           />
         </PopoverContent>
       </Popover>

@@ -3,6 +3,7 @@ import { CircleDollarSignIcon, PlusIcon } from "lucide-react"
 
 import { DatePicker } from "@/components/date-picker"
 import providersData from "@/data/subscription-providers.json"
+import { currentDateOnly, defaultRenewalDate } from "@/lib/date-only"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -85,20 +86,11 @@ type AddSubscriptionDialogProps = {
   onAdd: (subscription: Subscription) => void
 }
 
-function nextRenewalDate(billingCycle: BillingCycle) {
-  const date = new Date()
-
-  if (billingCycle === "yearly") {
-    date.setFullYear(date.getFullYear() + 1)
-  } else {
-    date.setMonth(date.getMonth() + 1)
+function defaultFormDates(referenceDate = currentDateOnly()) {
+  return {
+    startDate: referenceDate,
+    renewalDate: defaultRenewalDate("monthly", { referenceDate }),
   }
-
-  return date.toISOString().slice(0, 10)
-}
-
-function todayDate() {
-  return new Date().toISOString().slice(0, 10)
 }
 
 function useIsMobile() {
@@ -163,20 +155,31 @@ export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly")
-  const [startDate, setStartDate] = useState(todayDate)
-  const [renewalDate, setRenewalDate] = useState(() =>
-    nextRenewalDate("monthly")
+  const [startDate, setStartDate] = useState(() => defaultFormDates().startDate)
+  const [renewalDate, setRenewalDate] = useState(
+    () => defaultFormDates().renewalDate
   )
 
   const selectedProvider = selectedPresetOption?.provider
 
   function resetForm() {
+    const defaults = defaultFormDates()
+
     setSelectedPresetOption(null)
     setName("")
     setPrice("")
     setBillingCycle("monthly")
-    setStartDate(todayDate())
-    setRenewalDate(nextRenewalDate("monthly"))
+    setStartDate(defaults.startDate)
+    setRenewalDate(defaults.renewalDate)
+  }
+
+  function changeBillingCycle(nextBillingCycle: BillingCycle) {
+    setBillingCycle(nextBillingCycle)
+    setRenewalDate(
+      defaultRenewalDate(nextBillingCycle, {
+        startDate,
+      })
+    )
   }
 
   function choosePreset(option: PresetOption | null) {
@@ -185,15 +188,13 @@ export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
     if (!option) {
       setName("")
       setPrice("")
-      setBillingCycle("monthly")
-      setRenewalDate(nextRenewalDate("monthly"))
+      changeBillingCycle("monthly")
       return
     }
 
     setName(presetTitle(option.provider, option.preset))
     setPrice(String(option.preset.price))
-    setBillingCycle(option.preset.billingCycle)
-    setRenewalDate(nextRenewalDate(option.preset.billingCycle))
+    changeBillingCycle(option.preset.billingCycle)
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -299,7 +300,7 @@ export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
           <Select
             value={billingCycle}
             onValueChange={(value) =>
-              value && setBillingCycle(value as BillingCycle)
+              value && changeBillingCycle(value as BillingCycle)
             }
           >
             <SelectTrigger id="subscription-cycle" className="w-full">
@@ -325,7 +326,7 @@ export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
             id="subscription-start-date"
             name="startDate"
             value={startDate}
-            maxDate={new Date()}
+            maxDate={currentDateOnly()}
             onValueChange={setStartDate}
           />
         </Field>
