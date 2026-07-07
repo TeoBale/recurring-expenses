@@ -1,6 +1,6 @@
 import { WalletCardsIcon } from "lucide-react"
 
-import { AddSubscriptionDialog } from "@/components/add-subscription-dialog"
+import { LazyAddSubscriptionDialog } from "@/components/lazy-add-subscription-dialog"
 import {
   Empty,
   EmptyContent,
@@ -34,7 +34,7 @@ export function SubscriptionsEmptyState({
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <AddSubscriptionDialog onAdd={onAdd} />
+        <LazyAddSubscriptionDialog onAdd={onAdd} />
       </EmptyContent>
     </Empty>
   )

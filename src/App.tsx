@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react"
 import { ArrowRightIcon, MoonIcon, SunIcon } from "lucide-react"
 import {
   AnimatePresence,
@@ -7,14 +7,13 @@ import {
   useReducedMotion,
 } from "motion/react"
 
-import { AddSubscriptionDialog } from "@/components/add-subscription-dialog"
+import { LazyAddSubscriptionDialog } from "@/components/lazy-add-subscription-dialog"
 import {
   LiveSpendAmount,
   LiveSpendCounter,
 } from "@/components/live-spend-counter"
 import { SubscriptionCard } from "@/components/subscription-card"
 import { SubscriptionsEmptyState } from "@/components/subscriptions-empty-state"
-import { SubscriptionsTable } from "@/components/subscriptions-table"
 import { useTheme } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -31,6 +30,20 @@ type View = "dashboard" | "subscriptions"
 
 const pageTransitionClassName =
   "mx-auto col-start-1 row-start-1 w-full max-w-7xl px-4 delay-[260ms] transition-[opacity,transform] duration-200 ease-out data-[starting-style]:translate-y-1 data-[starting-style]:opacity-0 data-[ending-style]:-translate-y-1 data-[ending-style]:opacity-0 data-[ending-style]:delay-0 motion-reduce:delay-0 motion-reduce:transform-none motion-reduce:transition-none sm:px-6 lg:px-8"
+
+const LazySubscriptionsTable = lazy(() =>
+  import("@/components/subscriptions-table").then((module) => ({
+    default: module.SubscriptionsTable,
+  }))
+)
+
+function SubscriptionsTableFallback() {
+  return (
+    <div className="rounded-3xl border border-dashed border-border/70 bg-muted/25 px-5 py-8 text-sm text-muted-foreground">
+      Caricamento archivio abbonamenti...
+    </div>
+  )
+}
 
 function App() {
   const [activeView, setActiveView] = useState<View>("dashboard")
@@ -144,7 +157,7 @@ function App() {
                 {theme === "dark" ? <SunIcon /> : <MoonIcon />}
               </Button>
               <div className="hidden sm:block">
-                <AddSubscriptionDialog onAdd={addSubscription} />
+                <LazyAddSubscriptionDialog onAdd={addSubscription} />
               </div>
             </div>
           </div>
@@ -233,37 +246,41 @@ function App() {
             value="subscriptions"
             className={pageTransitionClassName}
           >
-            <section className="flex flex-col gap-8 py-10 sm:py-14">
-              <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-end">
-                <div className="max-w-xl">
-                  <p className="text-sm text-muted-foreground">
-                    Il tuo archivio
-                  </p>
-                  <h1 className="mt-1 font-display text-4xl tracking-tight sm:text-5xl">
-                    Abbonamenti
-                  </h1>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    Tutte le spese ricorrenti, le frequenze e le prossime date
-                    di rinnovo in un unico posto.
-                  </p>
+            {activeView === "subscriptions" ? (
+              <section className="flex flex-col gap-8 py-10 sm:py-14">
+                <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-end">
+                  <div className="max-w-xl">
+                    <p className="text-sm text-muted-foreground">
+                      Il tuo archivio
+                    </p>
+                    <h1 className="mt-1 font-display text-4xl tracking-tight sm:text-5xl">
+                      Abbonamenti
+                    </h1>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      Tutte le spese ricorrenti, le frequenze e le prossime date
+                      di rinnovo in un unico posto.
+                    </p>
+                  </div>
+                  <div className="sm:hidden">
+                    <LazyAddSubscriptionDialog onAdd={addSubscription} />
+                  </div>
                 </div>
-                <div className="sm:hidden">
-                  <AddSubscriptionDialog onAdd={addSubscription} />
-                </div>
-              </div>
 
-              {subscriptions.length === 0 ? (
-                <SubscriptionsEmptyState
-                  className="min-h-96"
-                  onAdd={addSubscription}
-                />
-              ) : (
-                <SubscriptionsTable
-                  subscriptions={sortedSubscriptions}
-                  onDelete={deleteSubscriptions}
-                />
-              )}
-            </section>
+                {subscriptions.length === 0 ? (
+                  <SubscriptionsEmptyState
+                    className="min-h-96"
+                    onAdd={addSubscription}
+                  />
+                ) : (
+                  <Suspense fallback={<SubscriptionsTableFallback />}>
+                    <LazySubscriptionsTable
+                      subscriptions={sortedSubscriptions}
+                      onDelete={deleteSubscriptions}
+                    />
+                  </Suspense>
+                )}
+              </section>
+            ) : null}
           </TabsContent>
         </main>
       </Tabs>

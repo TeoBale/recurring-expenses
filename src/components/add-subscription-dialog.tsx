@@ -84,6 +84,7 @@ function filterPresetOption(option: PresetOption, query: string) {
 
 type AddSubscriptionDialogProps = {
   onAdd: (subscription: Subscription) => void
+  defaultOpen?: boolean
 }
 
 function defaultFormDates(referenceDate = currentDateOnly()) {
@@ -147,9 +148,12 @@ function ProviderLogo({ provider }: { provider: SubscriptionProvider }) {
   )
 }
 
-export function AddSubscriptionDialog({ onAdd }: AddSubscriptionDialogProps) {
+export function AddSubscriptionDialog({
+  onAdd,
+  defaultOpen = false,
+}: AddSubscriptionDialogProps) {
   const isMobile = useIsMobile()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(defaultOpen)
   const [selectedPresetOption, setSelectedPresetOption] =
     useState<PresetOption | null>(null)
   const [name, setName] = useState("")
